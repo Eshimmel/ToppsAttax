@@ -117,9 +117,9 @@ app.post('/', function(req, res) {
 app.get('/teams', function(req, res) {
   var rawTeam = fs.readFileSync('./static/team.json')
   var teamList = JSON.parse(rawTeam)
-  console.log(teamList);
+  // console.log(teamList);
   res.render('teamList', {
-    teams: JSON.stringify(teamList)
+    teams: teamList
   })
 })
 

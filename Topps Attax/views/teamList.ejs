@@ -4,6 +4,19 @@
     <title></title>
   </head>
   <body>
-    <p> <%= teams %></p>
+    <%  function classSelector(year) {
+          if (year = 1) return "Freshman";
+          else if (year = 2) return "Sophomore";
+          else if (year = 3) return "Junior";
+          else if (year = 4) return "Senior";
+          else return "Pick a number 1 through 4";
+        } %>
+    <% console.log(teams) %>
+    <% for (var x in teams) { %>
+      <p>Team: <%=x%></p>
+      <% for (var y in teams[x]) { %>
+        <p>Name: <%=teams[x][y].name%> Class: <%=classSelector(teams[x][y].class)%></p>
+      <% }  %>
+    <% }  %>
   </body>
 </html>
