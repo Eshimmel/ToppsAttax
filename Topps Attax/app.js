@@ -66,6 +66,25 @@ function removePlayer(teamList, playerName, playerTeam) {
   }
 }
 
+function newYear(teamList) {
+  for (var x in teamList) {
+    for (var y in teamList[x]) {
+      var classInt = parseInt(teamList[x][y].class) + 1;
+      console.log(teamList[x][y]);
+      if (classInt > 4) {
+        var index = teamList[x].indexOf(teamList[x][y])
+        console.log(index);
+        teamList[x].splice(index, 1)
+
+      } else if (classInt <= 4) {
+        teamList[x][y].class = JSON.stringify(classInt)
+        console.log(teamList[x][y]);
+      }
+    }
+  }
+  return teamList
+}
+
 
 app.get('/', function(req, res) {
   res.render('home', {
@@ -98,11 +117,8 @@ app.post('/', function(req, res) {
   */
   var rawTeam = fs.readFileSync('./static/team.json')
   var teamList = JSON.parse(rawTeam)
-  console.log(teamList);
   player = new Player(playerName, playerClass)
-  console.log(player);
   teamList = teamSelector(player, playerTeam, teamList)
-  console.log(teamList);
   teamList = JSON.stringify(teamList)
   fs.writeFile('./static/team.json', teamList, 'utf8', function() {
     console.log('Wrote ' + teamList + ' to file');
@@ -144,6 +160,17 @@ app.post('/removeplayer', (req, res) => {
   res.render('playerremoved', {
     playerName: playerName
   })
+});
+
+app.get('/newyear', (req, res) => {
+  var rawTeam = fs.readFileSync('./static/team.json')
+  var teamList = JSON.parse(rawTeam)
+  teamList = newYear(teamList);
+  teamList = JSON.stringify(teamList)
+  fs.writeFile('./static/team.json', teamList, 'utf8', function() {
+    console.log('Wrote ' + teamList + ' to file');
+  })
+  res.redirect('/teams')
 });
 
 app.listen(4000)

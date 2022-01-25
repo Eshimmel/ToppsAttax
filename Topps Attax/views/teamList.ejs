@@ -5,10 +5,10 @@
   </head>
   <body>
     <%  function classSelector(year) {
-          if (year = 1) return "Freshman";
-          else if (year = 2) return "Sophomore";
-          else if (year = 3) return "Junior";
-          else if (year = 4) return "Senior";
+          if (year == 1) return "Freshman";
+          else if (year == 2) return "Sophomore";
+          else if (year == 3) return "Junior";
+          else if (year == 4) return "Senior";
           else return "Pick a number 1 through 4";
         } %>
     <% console.log(teams) %>
@@ -18,5 +18,7 @@
         <p>Name: <%=teams[x][y].name%> Class: <%=classSelector(teams[x][y].class)%></p>
       <% }  %>
     <% }  %>
+    <p><a href="newyear"><button type="button" name="New Year" onclick="/newyear">New Year</button></a></p>
+    <p><a href="/"><button type="button" name="Create Player" onclick="/">Create Players</button></a></p>
   </body>
 </html>
