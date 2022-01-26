@@ -96,25 +96,6 @@ app.post('/', function(req, res) {
   var playerName = req.body.playerName
   var playerClass = req.body.playerClass
   var playerTeam = req.body.playerTeam
-  /*const adjective = req.body.adjective
-  var feedBack = {
-    name: user,
-    comment: adjective
-   var rawcomments = fs.readFileSync('./static/feedback.json');
-  feed = JSON.parse(rawcomments);
-  console.log(feed);
-  comments = feed.comments
-  comments.push(feedBack);
-  var feed = {
-    comments: comments
-  }
-  var feed = JSON.stringify(feed);
-
-  fs.writeFile('./static/feedback.json', feed, 'utf8', function() {
-    console.log('Wrote to file');
-    console.log(feed)
-  });
-  */
   var rawTeam = fs.readFileSync('./static/team.json')
   var teamList = JSON.parse(rawTeam)
   player = new Player(playerName, playerClass)
