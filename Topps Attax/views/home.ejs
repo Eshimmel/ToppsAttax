@@ -1,16 +1,40 @@
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    Player Name and Year
-    <form action='/' method='post'>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script>
+  var whichTeam = 0
+  function chooseTeam() {
+    var pickTeam = ''
+    whichTeam++
+    if (whichTeam == 1) {
+      pickTeam = 'E1'
+    } else if (whichTeam == 2) {
+      pickTeam = 'E2'
+    } else if (whichTeam == 3) {
+      pickTeam = 'E3'
+    } else if (whichTeam == 4) {
+      pickTeam = 'E4'
+    } else if (whichTeam == 5) {
+      pickTeam = 'E5'
+    } else if (whichTeam == 6) {
+      pickTeam = 'E6'
+    }
+  }
+  document.getElementById('teamNumber').setAttribute(value, chooseTeam())
+  </script>
+</head>
+
+<body>
+  Player Name and Year
+  <form action='/' method='post'>
     <input type='text' name='playerName' placeholder='Player Name' value=''>
     <input type='text' name='playerClass' placeholder='Class(1=Freshman-4=Senior)' value='1'>
-    <input type="text" name="playerTeam" placeholder="What Team?" value="">
+    <input type="text" id="teamNumber" name="playerTeam" placeholder="What Team?" value=''>
     <input type='submit' value='Submit'>
-    </form>
-    <p><a href="teams"><button type="button" name="team_List" onclick="/teams">Team List</button></a></p>
-  </body>
+  </form>
+  <p><a href="teams"><button type="button" name="team_List" onclick="/teams">Team List</button></a></p>
+</body>
+
 </html>

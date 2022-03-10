@@ -22,6 +22,7 @@ function classSelector(year) {
   else if (year = 2) return "Sophomore";
   else if (year = 3) return "Junior";
   else if (year = 4) return "Senior";
+  else if (year = 5) return "Graduated";
   else return "Pick a number 1 through 4";
 }
 
@@ -71,12 +72,11 @@ function newYear(teamList) {
     for (var y in teamList[x]) {
       var classInt = parseInt(teamList[x][y].class) + 1;
       console.log(teamList[x][y]);
-      if (classInt > 4) {
+      if (classInt > 5) {
         var index = teamList[x].indexOf(teamList[x][y])
         console.log(index);
         teamList[x].splice(index, 1)
-
-      } else if (classInt <= 4) {
+      } else if (classInt <= 5) {
         teamList[x][y].class = JSON.stringify(classInt)
         console.log(teamList[x][y]);
       }

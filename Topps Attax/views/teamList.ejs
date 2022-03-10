@@ -1,24 +1,70 @@
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <%  function classSelector(year) {
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style media="screen">
+    body {
+      margin: auto;
+    }
+    .btn {
+      text-align: center;
+    }
+    .btnType {
+      border-color: #e8883c;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #0488ff;
+      text-align: center;
+      cursor: pointer;
+      width: auto;
+    }
+    .teamBox {
+      text-align: center;
+    }
+    #accordion {
+      text-align: center;
+    }
+  </style>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <script>
+    $(function() {
+      $("#accordion").accordion({
+        collapsible: true
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <%  function classSelector(year) {
           if (year == 1) return "Freshman";
           else if (year == 2) return "Sophomore";
           else if (year == 3) return "Junior";
           else if (year == 4) return "Senior";
+          else if (year == 5) return "Graduated";
           else return "Pick a number 1 through 4";
         } %>
-    <% console.log(teams) %>
-    <% for (var x in teams) { %>
-      <p>Team: <%=x%></p>
-      <% for (var y in teams[x]) { %>
-        <p>Name: <%=teams[x][y].name%> Class: <%=classSelector(teams[x][y].class)%></p>
-      <% }  %>
+  <% console.log(teams) %>
+  <div id="accordion">
+  <% for (var x in teams) { %>
+    <p>Team: <%=x%></p>
+    <div class="teamBox">
+    <% for (var y in teams[x]) { %>
+    <p>Name: <%=teams[x][y].name%> Class: <%=classSelector(teams[x][y].class)%></p>
     <% }  %>
-    <p><a href="newyear"><button type="button" name="New Year" onclick="/newyear">New Year</button></a></p>
-    <p><a href="/"><button type="button" name="Create Player" onclick="/">Create Players</button></a></p>
-  </body>
+  </div>
+  <% }  %>
+</div>
+<div class="btn">
+  <p><a href="newyear"><button type="button" class="btnType" name="New Year" onclick="/newyear">New Year</button></a></p>
+  <p><a href="/"><button type="button" class="btnType" name="Create Player" onclick="/">Create Players</button></a></p>
+</div>
+</body>
+
 </html>
